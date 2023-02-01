@@ -23,3 +23,14 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+require('@4tw/cypress-drag-drop')
+Cypress.Commands.add("dragTo",{prevSubject:"element"},(subject,targetE1)=>{
+    const dataTransfer = new DataTransfer();
+    cy.get(subject).trigger('dragstart',{
+        dataTransfer
+    });
+    cy.get(targetE1).trigger('drop',{
+        dataTransfer
+    });
+})
