@@ -18,13 +18,13 @@ class CheckFunctionalityPage{
         //         stat= state;
         //     }
             cy.get('form[id="checkboxes"]').children('input').each($ele=>{
-                cy.log(cy.get($ele).invoke('prop','checked').then(state=>{
+                cy.get($ele).invoke('prop','checked').then(state=>{
                     if(state){
                         cy.get($ele).uncheck();
                     }else{
                         cy.get($ele).check();
                     }
-                }));
+                });
             })
         // })
         // cy.get('form[id="checkboxes"]').each(($row)=>{
