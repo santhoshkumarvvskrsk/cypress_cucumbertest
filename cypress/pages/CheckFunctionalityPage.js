@@ -11,6 +11,8 @@ class CheckFunctionalityPage{
     }
     clickCheckBox(){
         cy.get('form[id="checkboxes"]').each(($row)=>{
+            cy.wrap($row).find("input").should('be.visible').click({ multiple: true, force: true });
+        })
         //    if($row.attr('checked')){
         //     cy.get('input').uncheck();
         //    }
@@ -25,14 +27,13 @@ class CheckFunctionalityPage{
             // }else{
             //     cy.get('input').check();
             // }
-            cy.get('input[type="checkbox"]').as('checkbox').invoke('is',':checked').then(checked=>{
-                if(checked){
-                    cy.get('@checkbox').uncheck();
-                }else{
-                    cy.get('@checkbox').check();
-                }
-            })
-        })
+            // cy.get('input[type="checkbox"]').as('checkbox').invoke('is',':checked').then(checked=>{
+            //     if(checked){
+            //         cy.get('@checkbox').uncheck();
+            //     }else{
+            //         cy.get('@checkbox').check();
+            //     }
+            // })
         // cy.get('input').check().should('have.attr','checked');
     }
 }
